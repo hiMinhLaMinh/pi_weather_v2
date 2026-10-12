@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1260" viewBox="0 0 1700 1260" role="img" aria-labelledby="title desc">
+  <title id="title">Sơ đồ nối Raspberry Pi, L298N, động cơ DC và LED cho weather_v2</title>
+  <desc id="desc">GPIO27 chân 13 nối IN1, GPIO22 chân 15 nối IN2, GPIO18 chân 12 nối ENA đã tháo jumper. Chân 2 5V của Pi nối 5V logic L298N sau khi tháo jumper 5V-EN. GPIO17 chân 11 qua điện trở 330 ohm đến anode LED. Cathode LED, chân 6 GND của Pi, GND L298N và cực âm nguồn động cơ nối chung. Cực dương nguồn động cơ nối Vs hoặc đầu +12V của module. Động cơ nối OUT1 và OUT2. Vị trí các đầu nối trên module được sắp lại cho dễ đọc, nối theo nhãn trên PCB.</desc>
+  <defs>
+    <style>
+      text{font-family:Arial,"Helvetica Neue",sans-serif;fill:#172b3c}
+      .heading{font-size:32px;font-weight:700}.sub{font-size:19px;fill:#536579}
+      .label{font-size:20px;font-weight:600}.small{font-size:17px;fill:#536579}
+      .tiny{font-size:15px;fill:#536579}.note{font-size:18px}
+      .wire{fill:none;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}
+      .terminal{fill:#fff;stroke:#536579;stroke-width:2}
+      .card{fill:#f5f8fb;stroke:#d7e1ea;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect width="1700" height="1260" fill="#fff"/>
+  <text x="60" y="62" class="heading">SƠ ĐỒ NỐI MẠCH · WEATHER V2</text>
+  <text x="60" y="96" class="sub">Raspberry Pi 4 / đầu GPIO 40 chân · L298N kênh A · một động cơ DC và một LED</text>
+  <rect x="60" y="116" width="1580" height="46" rx="8" fill="#fff5df"/>
+  <text x="80" y="145" class="note">Phương án cấp nguồn: THÁO jumper 5V-EN → cấp 5V logic từ Pi; nguồn động cơ cấp riêng. THÁO jumper ENA để dùng PWM.</text>
+
+  <!-- Raspberry Pi: chỉ đưa ra các chân được dùng trong bài. -->
+  <rect x="60" y="190" width="350" height="410" rx="16" fill="#edf6ed" stroke="#85a58a" stroke-width="2"/>
+  <text x="85" y="222" class="label">Raspberry Pi</text>
+  <text x="85" y="250" class="small">Cấp nguồn Pi qua cổng USB-C riêng</text>
+  <rect x="80" y="270" width="306" height="305" rx="8" fill="#fff" stroke="#d4e2d7"/>
+  <text x="96" y="302" class="label">5V · chân 2</text>
+  <text x="96" y="357" class="label">GPIO27 · chân 13</text>
+  <text x="96" y="412" class="label">GPIO22 · chân 15</text>
+  <text x="96" y="467" class="label">GPIO18 · chân 12</text>
+  <text x="96" y="522" class="label">GND · chân 6</text>
+  <text x="96" y="562" class="label">GPIO17 · chân 11</text>
+
+  <!-- Module L298N được bố trí theo chức năng, không phải vị trí PCB. -->
+  <rect x="690" y="190" width="400" height="445" rx="16" fill="#fceeed" stroke="#bb7773" stroke-width="2"/>
+  <text x="890" y="224" text-anchor="middle" class="label" style="font-size:26px">MODULE L298N</text>
+  <text x="715" y="302" class="label">5V (logic)</text>
+  <text x="715" y="357" class="label">IN1</text>
+  <text x="715" y="412" class="label">IN2</text>
+  <text x="715" y="467" class="label">ENA</text>
+  <text x="715" y="522" class="label">GND</text>
+  <text x="1065" y="302" text-anchor="end" class="label">OUT1</text>
+  <text x="1065" y="357" text-anchor="end" class="label">OUT2</text>
+  <text x="1065" y="410" text-anchor="end" class="small">OUT3</text>
+  <text x="1065" y="450" text-anchor="end" class="small">OUT4</text>
+  <text x="1065" y="522" text-anchor="end" class="label">Vs / +12V</text>
+  <text x="1065" y="546" text-anchor="end" class="tiny">Nguồn động cơ</text>
+  <rect x="839" y="272" width="112" height="203" rx="7" fill="#38434b"/>
+  <g stroke="#78858d" stroke-width="6">
+    <path d="M854 285V461 M872 285V461 M890 285V461 M908 285V461 M926 285V461 M944 285V461"/>
+  </g>
+  <text x="895" y="393" text-anchor="middle" style="fill:#fff;font-size:22px;font-weight:700">L298N</text>
+  <rect x="802" y="558" width="247" height="35" rx="6" fill="#fff" stroke="#bc8078"/>
+  <text x="925" y="582" text-anchor="middle" class="label" style="font-size:18px;fill:#a12f26">Jumper 5V-EN: THÁO</text>
+  <text x="890" y="617" text-anchor="middle" class="tiny">Kênh B: OUT3/OUT4, IN3/IN4, ENB không dùng</text>
+  <path d="M1090 403H1120 M1090 443H1120" stroke="#aeb8c0" stroke-width="3"/>
+
+  <!-- Dây tín hiệu và nguồn logic. -->
+  <path d="M410 295H690" class="wire" stroke="#cb3c36"/>
+  <text x="550" y="282" text-anchor="middle" class="small">5V logic · không cấp động cơ</text>
+  <path d="M410 350H690" class="wire" stroke="#d78316"/>
+  <path d="M410 405H690" class="wire" stroke="#2474bd"/>
+  <path d="M410 460H690" class="wire" stroke="#8b50b3"/>
+  <text x="550" y="446" text-anchor="middle" class="small">PWM · 100% / 40%</text>
+  <text x="550" y="486" text-anchor="middle" class="small" style="fill:#a12f26">Tháo jumper ENA</text>
+
+  <!-- Động cơ DC: hai đầu dây đều đi qua cầu H. -->
+  <rect x="1280" y="205" width="350" height="230" rx="16" class="card"/>
+  <text x="1455" y="238" text-anchor="middle" class="label">ĐỘNG CƠ DC</text>
+  <path d="M1090 295H1280 M1090 350H1280" class="wire" stroke="#267f88"/>
+  <text x="1185" y="282" text-anchor="middle" class="small">Dây 1</text>
+  <text x="1185" y="374" text-anchor="middle" class="small">Dây 2</text>
+  <path d="M1280 295H1350V307H1390 M1280 350H1350V337H1390" class="wire" stroke="#267f88"/>
+  <circle cx="1455" cy="322" r="65" fill="#e1e8ed" stroke="#67828c" stroke-width="3"/>
+  <text x="1455" y="335" text-anchor="middle" style="font-size:38px;font-weight:600">M</text>
+  <path d="M1520 322H1550" stroke="#67828c" stroke-width="9"/>
+  <text x="1455" y="411" text-anchor="middle" class="small">Thuận / nghịch tùy thứ tự hai dây</text>
+
+  <!-- Nguồn ngoài của động cơ. -->
+  <rect x="1280" y="490" width="350" height="185" rx="16" class="card"/>
+  <text x="1305" y="525" class="label">NGUỒN DC RIÊNG V<tspan baseline-shift="sub" font-size="14">M</tspan></text>
+  <text x="1310" y="567" class="label" style="fill:#cb3c36">(+) Cực dương</text>
+  <text x="1310" y="622" class="label">(−) Cực âm / GND</text>
+  <text x="1305" y="655" class="tiny">Chọn điện áp theo động cơ và module</text>
+  <path d="M1090 515H1200V560H1280" class="wire" stroke="#cb3c36"/>
+  <path d="M1280 615H1220V815" class="wire" stroke="#354452"/>
+
+  <!-- GND chung. Không có dây từ OUT1/OUT2 về bus GND. -->
+  <path d="M410 515H445V549 M445 561V815 M690 515H665V709 M665 721V815 M445 815H1570" class="wire" stroke="#354452"/>
+  <circle cx="445" cy="815" r="6" fill="#354452"/>
+  <circle cx="665" cy="815" r="6" fill="#354452"/>
+  <circle cx="1220" cy="815" r="6" fill="#354452"/>
+  <text x="1110" y="854" text-anchor="middle" class="label">GND CHUNG: Pi + L298N + nguồn động cơ + LED</text>
+  <path d="M1530 815V837 M1507 837H1553 M1514 847H1546 M1522 857H1538" fill="none" stroke="#354452" stroke-width="3"/>
+
+  <!-- LED với điện trở hạn dòng. -->
+  <path d="M410 555H490V715H550" class="wire" stroke="#248857"/>
+  <path d="M550 715H565L573 702L589 728L605 702L621 728L637 702L645 715H660" fill="none" stroke="#248857" stroke-width="4"/>
+  <path d="M660 715H711" class="wire" stroke="#248857"/>
+  <path d="M711 694L745 715L711 736Z" fill="#f7c8c1" stroke="#994a40" stroke-width="2.5"/>
+  <path d="M745 690V740" stroke="#994a40" stroke-width="3"/>
+  <path d="M745 715H820V815" class="wire" stroke="#354452"/>
+  <circle cx="820" cy="815" r="6" fill="#354452"/>
+  <path d="M739 683L759 665 M750 692L770 674 M752 665H759V672 M763 674H770V681" fill="none" stroke="#a65245" stroke-width="2"/>
+  <text x="603" y="682" text-anchor="middle" class="label">330 Ω</text>
+  <text x="735" y="653" text-anchor="middle" class="label">LED dự báo mưa</text>
+  <text x="710" y="769" text-anchor="middle" class="small">A (+)</text>
+  <text x="710" y="793" text-anchor="middle" class="small">chân dài</text>
+  <text x="870" y="769" text-anchor="middle" class="small">K (−)</text>
+  <text x="870" y="793" text-anchor="middle" class="small">chân ngắn</text>
+
+  <!-- Điểm nối chính được hiển thị rõ ở mép mỗi khối. -->
+  <g class="terminal">
+    <circle cx="410" cy="295" r="6"/><circle cx="410" cy="350" r="6"/>
+    <circle cx="410" cy="405" r="6"/><circle cx="410" cy="460" r="6"/>
+    <circle cx="410" cy="515" r="6"/><circle cx="410" cy="555" r="6"/>
+    <circle cx="690" cy="295" r="6"/><circle cx="690" cy="350" r="6"/>
+    <circle cx="690" cy="405" r="6"/><circle cx="690" cy="460" r="6"/>
+    <circle cx="690" cy="515" r="6"/><circle cx="1090" cy="295" r="6"/>
+    <circle cx="1090" cy="350" r="6"/><circle cx="1090" cy="515" r="6"/>
+    <circle cx="1280" cy="295" r="6"/><circle cx="1280" cy="350" r="6"/>
+    <circle cx="1280" cy="560" r="6"/><circle cx="1280" cy="615" r="6"/>
+  </g>
+
+  <!-- Tra chân vật lý của Raspberry Pi. -->
+  <rect x="60" y="893" width="560" height="315" rx="14" class="card"/>
+  <text x="82" y="925" class="label">Đầu GPIO: 8 hàng đầu (chân 1–16)</text>
+  <text x="82" y="950" class="tiny">Nhìn từ trên · xác định chân 1 theo board / pinout</text>
+  <g class="small">
+    <text x="208" y="984" text-anchor="end">3V3</text><text x="350" y="984">5V → logic L298N</text>
+    <text x="208" y="1011" text-anchor="end">GPIO2</text><text x="350" y="1011">5V</text>
+    <text x="208" y="1038" text-anchor="end">GPIO3</text><text x="350" y="1038">GND → GND chung</text>
+    <text x="208" y="1065" text-anchor="end">GPIO4</text><text x="350" y="1065">GPIO14</text>
+    <text x="208" y="1092" text-anchor="end">GND</text><text x="350" y="1092">GPIO15</text>
+    <text x="208" y="1119" text-anchor="end">GPIO17 → LED</text><text x="350" y="1119">GPIO18 → ENA</text>
+    <text x="208" y="1146" text-anchor="end">GPIO27 → IN1</text><text x="350" y="1146">GND</text>
+    <text x="208" y="1173" text-anchor="end">GPIO22 → IN2</text><text x="350" y="1173">GPIO23</text>
+  </g>
+  <g stroke="#b8c6d0" fill="#fff">
+    <rect x="228" y="968" width="48" height="23" rx="4"/><rect x="291" y="968" width="48" height="23" rx="4" fill="#ffe3df"/>
+    <rect x="228" y="995" width="48" height="23" rx="4"/><rect x="291" y="995" width="48" height="23" rx="4"/>
+    <rect x="228" y="1022" width="48" height="23" rx="4"/><rect x="291" y="1022" width="48" height="23" rx="4" fill="#e4e9ed"/>
+    <rect x="228" y="1049" width="48" height="23" rx="4"/><rect x="291" y="1049" width="48" height="23" rx="4"/>
+    <rect x="228" y="1076" width="48" height="23" rx="4"/><rect x="291" y="1076" width="48" height="23" rx="4"/>
+    <rect x="228" y="1103" width="48" height="23" rx="4" fill="#dcf1e5"/><rect x="291" y="1103" width="48" height="23" rx="4" fill="#ede1f6"/>
+    <rect x="228" y="1130" width="48" height="23" rx="4" fill="#fcebd1"/><rect x="291" y="1130" width="48" height="23" rx="4"/>
+    <rect x="228" y="1157" width="48" height="23" rx="4" fill="#deebfa"/><rect x="291" y="1157" width="48" height="23" rx="4"/>
+  </g>
+  <g text-anchor="middle" style="font-size:17px;font-weight:600">
+    <text x="252" y="984">1</text><text x="315" y="984">2</text>
+    <text x="252" y="1011">3</text><text x="315" y="1011">4</text>
+    <text x="252" y="1038">5</text><text x="315" y="1038">6</text>
+    <text x="252" y="1065">7</text><text x="315" y="1065">8</text>
+    <text x="252" y="1092">9</text><text x="315" y="1092">10</text>
+    <text x="252" y="1119">11</text><text x="315" y="1119">12</text>
+    <text x="252" y="1146">13</text><text x="315" y="1146">14</text>
+    <text x="252" y="1173">15</text><text x="315" y="1173">16</text>
+  </g>
+
+  <rect x="650" y="893" width="990" height="315" rx="14" class="card"/>
+  <text x="674" y="928" class="label">Đọc nhãn trên module trước khi đấu dây</text>
+  <text x="674" y="966" class="note">• ENA: tháo jumper, nối GPIO18 (chân 12) vào chân tín hiệu ENA.</text>
+  <text x="674" y="1003" class="note">• 5V-EN: tháo jumper; đầu 5V của module nhận 5V từ Pi (chân 2).</text>
+  <text x="674" y="1040" class="note">• Đầu “+12V” / “Vs”: nguồn công suất V<tspan baseline-shift="sub" font-size="12">M</tspan>; điện áp chọn theo động cơ.</text>
+  <text x="674" y="1077" class="note">• GND: tất cả điểm GND và cực âm nguồn động cơ phải nối chung.</text>
+  <text x="674" y="1114" class="note">• Không cấp động cơ từ Pi; không đưa nguồn động cơ / 5V vào GPIO.</text>
+  <text x="674" y="1151" class="note">• Tắt nguồn trước khi nối dây. Đọc nhãn PCB vì vị trí chân tùy module.</text>
+  <text x="674" y="1187" class="tiny">Sơ đồ bố trí theo chức năng; không mô phỏng vị trí vật lý các terminal trên PCB.</text>
+  <text x="60" y="1240" class="tiny">Chấm tròn đặc = nối chung; dây giao nhau không có chấm = không nối. Chân khớp config.py. Nguồn: Raspberry Pi, ST L298, Handson MDU-1049.</text>
+</svg>
